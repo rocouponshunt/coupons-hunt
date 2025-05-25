@@ -3,35 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Myntra Coupons - CouponsHunt</title>
+  <title>Myntra Coupons</title>
   <style>
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background: #f4f7fb; color: #333; padding: 30px 15px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
-    header { display: flex; align-items: center; gap: 10px; font-size: 2rem; font-weight: 700; color: #007bff; margin-bottom: 20px; }
-    header img { height: 45px; }
-    .store-banner { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 3px 10px rgba(0, 123, 255, 0.15); width: 100%; max-width: 800px; text-align: center; }
-    .store-banner img { max-height: 80px; margin-bottom: 10px; }
-    .coupon-box { margin-top: 30px; width: 100%; max-width: 800px; background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    .coupon-box h2 { color: #007bff; margin-bottom: 10px; }
-    .coupon { margin-top: 10px; padding: 12px; border: 1px dashed #007bff; border-radius: 8px; background: #f0f8ff; font-size: 1.1rem; text-align: center; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+    h1 {
+      color: #007bff;
+      margin-bottom: 30px;
+    }
+    .coupon-card {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .coupon-code {
+      font-size: 1.5rem;
+      font-weight: bold;
+      background: #eef3fc;
+      padding: 12px 20px;
+      border-radius: 8px;
+      margin: 15px 0;
+      display: inline-block;
+    }
+    .btn {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background: #0056b3;
+    }
   </style>
 </head>
 <body>
+  <h1>Myntra Coupon</h1>
+  <div class="coupon-card">
+    <p>Trendy styles await! Use this code for extra discounts on Myntra.</p>
+    <div class="coupon-code" id="code">MYNTRA20</div>
+    <button class="btn" onclick="copyAndRedirect()">Copy & Visit Myntra</button>
+  </div>
 
-<header>
-  <img src="https://asset22.ckassets.com/resources/image/staticpage_images/ChatGPTImageMay24202508_17_59P-1748180133.jpeg" alt="CouponsHunt Logo" />
-  <span>CouponsHunt</span>
-</header>
-
-<section class="store-banner">
-  <img src="https://asset22.ckassets.com/resources/image/staticpage_images/myntra-1735792893-1748180041.jpg" alt="Myntra Logo" />
-  <h1>Myntra Coupons & Offers</h1>
-  <p>Shop trendy fashion and lifestyle products at great prices with Myntra coupons!</p>
-</section>
-
-<section class="coupon-box">
-  <h2>Top Myntra Coupon</h2>
-  <div class="coupon">Extra 15% Off on First Order. Use Code <strong>MYNTRA15</strong></div>
-</section>
-
+  <script>
+    function copyAndRedirect() {
+      const code = document.getElementById('code').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        window.location.href = 'https://www.myntra.com/';
+      });
+    }
+  </script>
 </body>
 </html>
