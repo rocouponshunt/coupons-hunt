@@ -30,6 +30,7 @@
       align-items: center;
       margin-bottom: 40px;
       padding: 0 10px;
+      position: relative;
     }
     header .logo {
       display: flex;
@@ -44,12 +45,21 @@
     header .logo img {
       height: 45px;
     }
+    header .search-box {
+      position: relative;
+      flex-grow: 1;
+      max-width: 300px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
     header .search-box input[type="search"] {
       padding: 8px 14px;
       font-size: 1rem;
       border: 2px solid #007bff;
       border-radius: 25px;
-      width: 220px;
+      width: 100%;
+      max-width: 300px;
       transition: border-color 0.3s ease;
     }
     header .search-box input[type="search"]:focus {
@@ -66,6 +76,7 @@
       max-width: 900px;
       width: 100%;
       margin-bottom: 50px;
+      transition: all 0.3s ease;
     }
     nav.store-list a {
       background: white;
@@ -93,6 +104,7 @@
     }
     nav.store-list a span {
       font-size: 1rem;
+      text-align: center;
     }
 
     /* About Us Section */
@@ -129,28 +141,34 @@
       line-height: 1.6;
     }
 
-    /* Testimonials Section */
+    /* Testimonials Section as slider */
     section.testimonials {
       max-width: 900px;
-      margin: 0 auto;
+      margin: 0 auto 50px;
       background: white;
-      padding: 30px 35px;
+      padding: 30px 20px;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgb(0 123 255 / 0.1);
-      text-align: center;
       color: #333;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      max-width: 600px;
     }
     section.testimonials h2 {
       color: #007bff;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       font-size: 2rem;
+      text-align: center;
     }
+
     .testimonial-list {
       display: flex;
-      gap: 25px;
-      flex-wrap: wrap;
-      justify-content: center;
+      gap: 20px;
+      transition: transform 0.4s ease;
+      will-change: transform;
     }
+
     .testimonial {
       background: #f0f6ff;
       padding: 20px 25px;
@@ -162,6 +180,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      flex-shrink: 0;
     }
     .testimonial h4 {
       margin-top: 20px;
@@ -170,6 +189,35 @@
       color: #007bff;
       text-align: right;
       font-size: 1rem;
+    }
+
+    /* Slider arrows */
+    .slider-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #007bff;
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      user-select: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease;
+      z-index: 10;
+    }
+    .slider-arrow:hover {
+      background: #0056b3;
+    }
+    .slider-arrow.left {
+      left: 10px;
+    }
+    .slider-arrow.right {
+      right: 10px;
     }
 
     /* Responsive */
@@ -189,11 +237,17 @@
         max-width: 100%;
       }
       .testimonial-list {
-        flex-direction: column;
-        gap: 20px;
+        gap: 15px;
       }
       .testimonial {
         width: 100%;
+      }
+      section.testimonials {
+        max-width: 100%;
+        padding: 20px 10px;
+      }
+      .slider-arrow {
+        display: none;
       }
     }
   </style>
@@ -206,11 +260,17 @@
     <span>CouponsHunt</span>
   </div>
   <div class="search-box">
-    <input type="search" placeholder="Search coupons or stores..." aria-label="Search coupons or stores" />
+    <input
+      type="search"
+      placeholder="Search coupons or stores..."
+      aria-label="Search coupons or stores"
+      id="searchInput"
+      autocomplete="off"
+    />
   </div>
 </header>
 
-<nav class="store-list">
+<nav class="store-list" id="storeList">
   <a href="abhibus.html" title="AbhiBus">
     <img src="https://asset22.ckassets.com/resources/image/staticpage_images/abhibus-coupons-1735633910-1748179991.jpg" alt="AbhiBus Logo" />
     <span>AbhiBus</span>
@@ -250,9 +310,11 @@
   </div>
 </section>
 
-<section class="testimonials">
+<section class="testimonials" aria-label="User testimonials slider">
   <h2>What Our Users Say</h2>
-  <div class="testimonial-list">
+  <div class="slider-arrow left" id="prevBtn" aria-label="Previous testimonials" role="button" tabindex="0">&#10094;</div>
+  <div class="slider-arrow right" id="nextBtn" aria-label="Next testimonials" role="button" tabindex="0">&#10095;</div>
+  <div class="testimonial-list" id="testimonialList">
     <div class="testimonial">
       <p>"CouponsHunt helped me save big on my online shopping! The deals are always up-to-date and easy to find."</p>
       <h4>- Rina K.</h4>
@@ -265,8 +327,68 @@
       <p>"Great platform to find genuine discounts. The cashback offers made my purchase even sweeter."</p>
       <h4>- Meera P.</h4>
     </div>
+    <div class="testimonial">
+      <p>"The customer support and timely updates make CouponsHunt my favorite coupon site. Saves me so much time!"</p>
+      <h4>- Neha D.</h4>
+    </div>
   </div>
 </section>
+
+<script>
+  // Search store filter
+  const searchInput = document.getElementById('searchInput');
+  const storeList = document.getElementById('storeList');
+  const storeLinks = Array.from(storeList.querySelectorAll('a'));
+
+  searchInput.addEventListener('input', () => {
+    const query = searchInput.value.trim().toLowerCase();
+    storeLinks.forEach(link => {
+      const storeName = link.textContent.trim().toLowerCase();
+      if (storeName.includes(query)) {
+        link.style.display = 'flex';
+      } else {
+        link.style.display = 'none';
+      }
+    });
+  });
+
+  // Testimonials slider logic
+  const testimonialList = document.getElementById('testimonialList');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const testimonialCount = testimonialList.children.length;
+  let currentIndex = 0;
+
+  function updateSlider() {
+    const slideWidth = testimonialList.children[0].offsetWidth + 20; // width + gap
+    testimonialList.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
+  }
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + testimonialCount) % testimonialCount;
+    updateSlider();
+  });
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % testimonialCount;
+    updateSlider();
+  });
+
+  // Keyboard accessibility for arrows
+  [prevBtn, nextBtn].forEach(btn => {
+    btn.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        btn.click();
+      }
+    });
+  });
+
+  // Adjust slider on window resize
+  window.addEventListener('resize', updateSlider);
+
+  // Initialize slider position
+  updateSlider();
+</script>
 
 </body>
 </html>
