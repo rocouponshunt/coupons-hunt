@@ -7,15 +7,13 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f7f7f7;
+      background: #f4f4f4;
       margin: 0;
       padding: 20px;
     }
 
     .store-header {
-      display: flex;
-      align-items: center;
-      gap: 20px;
+      text-align: center;
       background: #fff;
       padding: 20px;
       border-radius: 12px;
@@ -23,12 +21,12 @@
     }
 
     .store-header img {
-      width: 120px;
+      width: 150px;
       height: auto;
     }
 
     .store-header h1 {
-      margin: 0;
+      margin: 10px 0 0;
       font-size: 28px;
       color: #333;
     }
@@ -100,16 +98,26 @@
       cursor: pointer;
     }
 
+    .visit-container {
+      text-align: center;
+      margin-top: 30px;
+    }
+
     .visit-btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 24px;
+      padding: 14px 28px;
       background: #28a745;
       color: #fff;
-      border: none;
+      font-size: 16px;
       border-radius: 6px;
+      border: none;
       text-decoration: none;
       font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .visit-btn:hover {
+      background: #218838;
     }
   </style>
 </head>
@@ -117,7 +125,7 @@
 
   <!-- Header -->
   <div class="store-header">
-    <img src="https://seeklogo.com/images/A/abhibus-logo-DC343BE96A-seeklogo.com.png" alt="AbhiBus Logo" />
+    <img src="images/abhibus.png" alt="AbhiBus Logo" />
     <h1>AbhiBus Coupons & Offers</h1>
   </div>
 
@@ -125,7 +133,7 @@
   <div class="about-store">
     <h2>About AbhiBus</h2>
     <p>
-      AbhiBus is one of India’s leading online bus ticketing platforms that offers easy and fast bookings across thousands of routes and operators. Whether you're planning a last-minute trip or a long journey, AbhiBus ensures a smooth booking experience with exclusive discounts, secure payments, and instant confirmations.
+      AbhiBus is a top-tier online bus ticketing platform in India, providing hassle-free bookings across thousands of routes and operators. From last-minute getaways to planned trips, AbhiBus ensures a smooth booking experience with amazing offers, secure payments, and quick confirmations.
     </p>
   </div>
 
@@ -161,8 +169,10 @@
         <button class="copy-btn" onclick="copyCode('code3')">Copy Code</button>
       </div>
     </div>
+  </div>
 
-    <!-- Visit CTA -->
+  <!-- Visit CTA -->
+  <div class="visit-container">
     <a class="visit-btn" href="https://www.abhibus.com" target="_blank">Visit AbhiBus</a>
   </div>
 
@@ -171,7 +181,7 @@
     function copyCode(id) {
       const code = document.getElementById(id).textContent;
       navigator.clipboard.writeText(code).then(() => {
-        alert("Code copied: " + code);
+        window.open('https://www.abhibus.com', '_blank');
       });
     }
   </script>
