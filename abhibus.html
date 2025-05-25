@@ -3,116 +3,119 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Coupons Hunt - Best Coupon Deals</title>
+  <title>AbhiBus Coupons | Coupons Hunt</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
-      background: #f0f2f5;
-      color: #333;
+      background: #fafafa;
+      color: #222;
+      padding: 20px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
     header {
-      background-color: #222;
-      padding: 15px 20px;
       display: flex;
       align-items: center;
       gap: 15px;
+      margin-bottom: 30px;
     }
     header img {
-      height: 40px;
+      height: 36px;
     }
     header h1 {
-      color: #fff;
       font-weight: 700;
+      font-size: 1.8rem;
       margin: 0;
-      font-size: 1.6rem;
+      color: #d32f2f;
+      flex-grow: 1;
     }
-    main {
-      max-width: 1000px;
-      margin: 30px auto;
-      padding: 0 15px;
+    a.back-link {
+      text-decoration: none;
+      color: #007bff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: 1px solid #007bff;
+      padding: 6px 12px;
+      border-radius: 20px;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
-    #searchBar {
-      width: 100%;
-      padding: 12px 16px;
-      font-size: 1rem;
-      border: 2px solid #ddd;
-      border-radius: 30px;
-      box-sizing: border-box;
-      transition: border-color 0.3s ease;
-      margin-bottom: 40px;
+    a.back-link:hover {
+      background-color: #007bff;
+      color: white;
     }
-    #searchBar:focus {
-      outline: none;
-      border-color: #007bff;
-      box-shadow: 0 0 8px rgba(0,123,255,0.4);
-    }
-    .store-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
-      gap: 25px;
-    }
-    .store-card {
+    .coupon {
       background: #fff;
       border-radius: 12px;
-      padding: 25px 15px;
-      text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      padding: 20px 25px;
+      margin-bottom: 25px;
+    }
+    .coupon h3 {
+      margin-top: 0;
+      color: #d32f2f;
+    }
+    .code {
+      font-weight: 700;
+      background: #ffeb3b;
+      padding: 7px 15px;
+      border-radius: 6px;
+      display: inline-block;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      margin-top: 10px;
+      user-select: all;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
-    .store-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    .code:hover {
+      background-color: #fdd835;
     }
-    .store-card a {
+    a.book-now {
+      display: inline-block;
+      margin-top: 15px;
       text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      color: #007bff;
-      display: block;
+      background: #d32f2f;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-weight: 700;
+      transition: background-color 0.3s ease;
     }
-    @media (max-width: 480px) {
-      header h1 {
-        font-size: 1.2rem;
-      }
+    a.book-now:hover {
+      background-color: #b71c1c;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <img src="https://cdn-icons-png.flaticon.com/512/263/263115.png" alt="Coupons Hunt Logo" />
-  <h1>Coupons Hunt</h1>
+  <a href="index.html" class="back-link">← Back to Stores</a>
+  <h1>AbhiBus Coupons & Offers</h1>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/AbhiBus_logo.svg/2560px-AbhiBus_logo.svg.png" alt="AbhiBus Logo" style="height:40px;">
 </header>
 
-<main>
-  <input
-    type="text"
-    id="searchBar"
-    placeholder="Search for a store..."
-    onkeyup="filterStores()"
-    aria-label="Search stores"
-  />
+<div class="coupon">
+  <h3>Flat ₹100 Off on Bus Bookings</h3>
+  <p>Use code:</p>
+  <span class="code" onclick="copyCode('ABHI100')">ABHI100</span>
+  <br />
+  <a href="https://www.abhibus.com" target="_blank" rel="noopener" class="book-now">Book Now</a>
+</div>
 
-  <div class="store-list" id="storeList">
-    <div class="store-card"><a href="abhibus.html">AbhiBus</a></div>
-    <div class="store-card"><a href="amazon.html">Amazon</a></div>
-    <div class="store-card"><a href="flipkart.html">Flipkart</a></div>
-    <div class="store-card"><a href="myntra.html">Myntra</a></div>
-    <div class="store-card"><a href="ajio.html">Ajio</a></div>
-  </div>
-</main>
+<div class="coupon">
+  <h3>20% Cashback on Wallet Payments</h3>
+  <p>No coupon code needed. Cashback credited within 48 hours.</p>
+  <a href="https://www.abhibus.com" target="_blank" rel="noopener" class="book-now">Book Now</a>
+</div>
 
 <script>
-  function filterStores() {
-    const input = document.getElementById('searchBar').value.toLowerCase();
-    const storeCards = document.querySelectorAll('.store-card');
-    storeCards.forEach(card => {
-      const text = card.innerText.toLowerCase();
-      card.style.display = text.includes(input) ? 'block' : 'none';
+  function copyCode(code) {
+    navigator.clipboard.writeText(code).then(() => {
+      alert(`Coupon code "${code}" copied to clipboard!`);
     });
   }
 </script>
