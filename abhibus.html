@@ -3,92 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AbhiBus Coupons - CouponsHunt</title>
+  <title>AbhiBus Coupons</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
+      font-family: Arial, sans-serif;
       background: #f4f7fb;
-      color: #333;
-      padding: 30px 15px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-height: 100vh;
+      padding: 40px 20px;
     }
-
-    header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 2rem;
-      font-weight: 700;
+    h1 {
       color: #007bff;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
-
-    header img {
-      height: 45px;
-    }
-
-    .store-banner {
+    .coupon-card {
       background: white;
-      padding: 20px;
+      padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 3px 10px rgba(0, 123, 255, 0.15);
-      width: 100%;
-      max-width: 800px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       text-align: center;
     }
-
-    .store-banner img {
-      max-height: 80px;
-      margin-bottom: 10px;
-    }
-
-    .coupon-box {
-      margin-top: 30px;
-      width: 100%;
-      max-width: 800px;
-      background: white;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-
-    .coupon-box h2 {
-      color: #007bff;
-      margin-bottom: 10px;
-    }
-
-    .coupon {
-      margin-top: 10px;
-      padding: 12px;
-      border: 1px dashed #007bff;
+    .coupon-code {
+      font-size: 1.5rem;
+      font-weight: bold;
+      background: #eef3fc;
+      padding: 12px 20px;
       border-radius: 8px;
-      background: #f0f8ff;
-      font-size: 1.1rem;
-      text-align: center;
+      margin: 15px 0;
+      display: inline-block;
+    }
+    .btn {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background: #0056b3;
     }
   </style>
 </head>
 <body>
+  <h1>AbhiBus Coupon</h1>
+  <div class="coupon-card">
+    <p>Use the coupon code below and save big on your next bus booking!</p>
+    <div class="coupon-code" id="code">ABHI20</div>
+    <button class="btn" onclick="copyAndRedirect()">Copy & Visit AbhiBus</button>
+  </div>
 
-<header>
-  <img src="https://asset22.ckassets.com/resources/image/staticpage_images/ChatGPTImageMay24202508_17_59P-1748180133.jpeg" alt="CouponsHunt Logo" />
-  <span>CouponsHunt</span>
-</header>
-
-<section class="store-banner">
-  <img src="https://asset22.ckassets.com/resources/image/staticpage_images/abhibus-coupons-1735633910-1748179991.jpg" alt="AbhiBus Logo" />
-  <h1>AbhiBus Coupons & Offers</h1>
-  <p>Book bus tickets at discounted fares using the latest AbhiBus coupons.</p>
-</section>
-
-<section class="coupon-box">
-  <h2>Top AbhiBus Coupon</h2>
-  <div class="coupon">Get Flat ₹100 Off on Bus Bookings Above ₹499. Use Code <strong>BUS100</strong></div>
-</section>
-
+  <script>
+    function copyAndRedirect() {
+      const code = document.getElementById('code').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        window.location.href = 'https://www.abhibus.com/';
+      });
+    }
+  </script>
 </body>
 </html>
