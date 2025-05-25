@@ -2,63 +2,109 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Coupon Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coupons Hunt - Best Coupon Deals</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
     body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      background: #f9f9f9;
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #f0f2f5;
+      color: #333;
     }
-    h1 {
-      text-align: center;
+    header {
+      background-color: #222;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    header img {
+      height: 40px;
+    }
+    header h1 {
+      color: #fff;
+      font-weight: 700;
+      margin: 0;
+      font-size: 1.6rem;
+    }
+    main {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 0 15px;
     }
     #searchBar {
       width: 100%;
-      padding: 10px;
-      margin: 20px auto;
-      max-width: 500px;
-      display: block;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      padding: 12px 16px;
+      font-size: 1rem;
+      border: 2px solid #ddd;
+      border-radius: 30px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+      margin-bottom: 40px;
+    }
+    #searchBar:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 8px rgba(0,123,255,0.4);
     }
     .store-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+      gap: 25px;
     }
     .store-card {
       background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      width: 200px;
+      border-radius: 12px;
+      padding: 25px 15px;
       text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: transform 0.2s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
     }
     .store-card:hover {
-      transform: scale(1.05);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
     }
-    a {
+    .store-card a {
       text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
       color: #007bff;
-      font-weight: bold;
+      display: block;
+    }
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
 <body>
 
-<h1>Welcome to Coupon Hub</h1>
-<input type="text" id="searchBar" placeholder="Search for a store..." onkeyup="filterStores()" />
+<header>
+  <img src="https://cdn-icons-png.flaticon.com/512/263/263115.png" alt="Coupons Hunt Logo" />
+  <h1>Coupons Hunt</h1>
+</header>
 
-<div class="store-list" id="storeList">
-  <div class="store-card"><a href="abhibus.html">AbhiBus</a></div>
-  <div class="store-card"><a href="amazon.html">Amazon</a></div>
-  <div class="store-card"><a href="flipkart.html">Flipkart</a></div>
-  <div class="store-card"><a href="myntra.html">Myntra</a></div>
-  <div class="store-card"><a href="ajio.html">Ajio</a></div>
-</div>
+<main>
+  <input
+    type="text"
+    id="searchBar"
+    placeholder="Search for a store..."
+    onkeyup="filterStores()"
+    aria-label="Search stores"
+  />
+
+  <div class="store-list" id="storeList">
+    <div class="store-card"><a href="abhibus.html">AbhiBus</a></div>
+    <div class="store-card"><a href="amazon.html">Amazon</a></div>
+    <div class="store-card"><a href="flipkart.html">Flipkart</a></div>
+    <div class="store-card"><a href="myntra.html">Myntra</a></div>
+    <div class="store-card"><a href="ajio.html">Ajio</a></div>
+  </div>
+</main>
 
 <script>
   function filterStores() {
