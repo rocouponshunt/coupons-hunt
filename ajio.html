@@ -3,63 +3,185 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ajio Coupons</title>
+  <title>Ajio Coupons & Offers</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f7fb;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px 20px;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
     }
-    h1 {
-      color: #007bff;
-      margin-bottom: 30px;
-    }
-    .coupon-card {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+
+    .store-header {
       text-align: center;
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
-    .coupon-code {
-      font-size: 1.5rem;
+
+    .store-header img {
+      width: 150px;
+      height: auto;
+    }
+
+    .store-header h1 {
+      margin: 10px 0 0;
+      font-size: 28px;
+      color: #333;
+    }
+
+    .about-store {
+      background: #fff;
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .slider {
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .slider img {
+      border-radius: 10px;
+      width: 300px;
+      height: auto;
+    }
+
+    .coupons {
+      background: #fff;
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .coupon {
+      border: 1px dashed #007bff;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      position: relative;
+      background: #e6f0ff;
+    }
+
+    .coupon h3 {
+      margin: 0 0 10px;
+      color: #0056b3;
+    }
+
+    .code-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    .code {
       font-weight: bold;
-      background: #eef3fc;
-      padding: 12px 20px;
-      border-radius: 8px;
-      margin: 15px 0;
-      display: inline-block;
+      background: #fff;
+      padding: 8px 16px;
+      border-radius: 5px;
+      border: 1px solid #007bff;
     }
-    .btn {
+
+    .copy-btn {
       background: #007bff;
-      color: white;
+      color: #fff;
       border: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-size: 1rem;
+      padding: 8px 16px;
+      border-radius: 5px;
       cursor: pointer;
     }
-    .btn:hover {
+
+    .visit-container {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .visit-btn {
+      padding: 14px 28px;
+      background: #007bff;
+      color: #fff;
+      font-size: 16px;
+      border-radius: 6px;
+      border: none;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .visit-btn:hover {
       background: #0056b3;
     }
   </style>
 </head>
 <body>
-  <h1>Ajio Coupon</h1>
-  <div class="coupon-card">
-    <p>Apply this Ajio code for stylish fashion at discounted prices!</p>
-    <div class="coupon-code" id="code">AJIO30</div>
-    <button class="btn" onclick="copyAndRedirect()">Copy & Visit Ajio</button>
+
+  <!-- Header -->
+  <div class="store-header">
+    <img src="https://asset22.ckassets.com/resources/image/staticpage_images/ajio-coupons-1735561339-1748182347.jpg" alt="Ajio Logo" />
+    <h1>Ajio Coupons & Offers</h1>
   </div>
 
+  <!-- About Section -->
+  <div class="about-store">
+    <h2>About Ajio</h2>
+    <p>
+      Ajio is a popular Indian online fashion platform offering a diverse range of clothing, footwear, and accessories. Known for trendy styles, exclusive collections, and great discounts, Ajio caters to fashion enthusiasts across India.
+    </p>
+  </div>
+
+  <!-- Image Slider -->
+  <div class="slider">
+    <img src="https://assets.ajio.com/medias/sys_master/root/h46/hdb/15714110359518/-1117Wx1400H-460108349-multi-MODEL.jpg" alt="Ajio Fashion" />
+    <img src="https://assets.ajio.com/medias/sys_master/root/ha7/h49/15714111914462/-1117Wx1400H-460108395-red-MODEL.jpg" alt="Ajio Apparel" />
+    <img src="https://assets.ajio.com/medias/sys_master/root/hde/h70/15714113826526/-1117Wx1400H-460108418-multi-MODEL.jpg" alt="Ajio Sale" />
+  </div>
+
+  <!-- Coupons Section -->
+  <div class="coupons">
+    <div class="coupon">
+      <h3>Flat 20% Off on All Orders</h3>
+      <div class="code-section">
+        <div class="code" id="code1">AJIO20</div>
+        <button class="copy-btn" onclick="copyCode('code1')">Copy Code</button>
+      </div>
+    </div>
+
+    <div class="coupon">
+      <h3>Extra 10% Cashback on Select Cards</h3>
+      <div class="code-section">
+        <div class="code" id="code2">CASHBACK10</div>
+        <button class="copy-btn" onclick="copyCode('code2')">Copy Code</button>
+      </div>
+    </div>
+
+    <div class="coupon">
+      <h3>Buy 1 Get 1 Free on Selected Apparel</h3>
+      <div class="code-section">
+        <div class="code" id="code3">B1G1FREE</div>
+        <button class="copy-btn" onclick="copyCode('code3')">Copy Code</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Visit CTA -->
+  <div class="visit-container">
+    <a class="visit-btn" href="https://www.ajio.com" target="_blank">Visit Ajio</a>
+  </div>
+
+  <!-- JavaScript for Copy & Redirect -->
   <script>
-    function copyAndRedirect() {
-      const code = document.getElementById('code').innerText;
+    function copyCode(id) {
+      const code = document.getElementById(id).textContent;
       navigator.clipboard.writeText(code).then(() => {
-        window.location.href = 'https://www.ajio.com/';
+        window.open('https://www.ajio.com', '_blank');
       });
     }
   </script>
