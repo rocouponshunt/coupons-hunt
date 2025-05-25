@@ -3,119 +3,52 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Coupons Hunt - Best Coupon Deals</title>
+  <title>Coupons Hunt - Home</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
     body {
-      margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      background: #f0f2f5;
+      font-family: Arial, sans-serif;
+      margin: 30px;
+      background: #f8f8f8;
       color: #333;
     }
-    header {
-      background-color: #222;
-      padding: 15px 20px;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-    header img {
-      height: 40px;
-    }
-    header h1 {
-      color: #fff;
-      font-weight: 700;
-      margin: 0;
-      font-size: 1.6rem;
-    }
-    main {
-      max-width: 1000px;
-      margin: 30px auto;
-      padding: 0 15px;
-    }
-    #searchBar {
-      width: 100%;
-      padding: 12px 16px;
-      font-size: 1rem;
-      border: 2px solid #ddd;
-      border-radius: 30px;
-      box-sizing: border-box;
-      transition: border-color 0.3s ease;
+    h1 {
+      color: #007bff;
+      text-align: center;
       margin-bottom: 40px;
     }
-    #searchBar:focus {
-      outline: none;
-      border-color: #007bff;
-      box-shadow: 0 0 8px rgba(0,123,255,0.4);
+    ul.store-list {
+      list-style-type: none;
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 0;
     }
-    .store-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
-      gap: 25px;
+    ul.store-list li {
+      background: white;
+      margin-bottom: 15px;
+      padding: 15px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease;
     }
-    .store-card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 25px 15px;
-      text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
+    ul.store-list li:hover {
+      background-color: #e9f2ff;
     }
-    .store-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-    }
-    .store-card a {
+    ul.store-list li a {
       text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: #007bff;
       display: block;
-    }
-    @media (max-width: 480px) {
-      header h1 {
-        font-size: 1.2rem;
-      }
     }
   </style>
 </head>
 <body>
-
-<header>
-  <img src="https://cdn-icons-png.flaticon.com/512/263/263115.png" alt="Coupons Hunt Logo" />
-  <h1>Coupons Hunt</h1>
-</header>
-
-<main>
-  <input
-    type="text"
-    id="searchBar"
-    placeholder="Search for a store..."
-    onkeyup="filterStores()"
-    aria-label="Search stores"
-  />
-
-  <div class="store-list" id="storeList">
-    <div class="store-card"><a href="abhibus.html">AbhiBus</a></div>
-    <div class="store-card"><a href="amazon.html">Amazon</a></div>
-    <div class="store-card"><a href="flipkart.html">Flipkart</a></div>
-    <div class="store-card"><a href="myntra.html">Myntra</a></div>
-    <div class="store-card"><a href="ajio.html">Ajio</a></div>
-  </div>
-</main>
-
-<script>
-  function filterStores() {
-    const input = document.getElementById('searchBar').value.toLowerCase();
-    const storeCards = document.querySelectorAll('.store-card');
-    storeCards.forEach(card => {
-      const text = card.innerText.toLowerCase();
-      card.style.display = text.includes(input) ? 'block' : 'none';
-    });
-  }
-</script>
-
+  <h1>Welcome to Coupons Hunt</h1>
+  <ul class="store-list">
+    <li><a href="abhibus.html">AbhiBus</a></li>
+    <li><a href="amazon.html">Amazon</a></li>
+    <li><a href="flipkart.html">Flipkart</a></li>
+    <li><a href="myntra.html">Myntra</a></li>
+    <li><a href="ajio.html">Ajio</a></li>
+  </ul>
 </body>
 </html>
