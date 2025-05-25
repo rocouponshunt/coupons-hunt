@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coupon Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+    h1 {
+      text-align: center;
+    }
+    #searchBar {
+      width: 100%;
+      padding: 10px;
+      margin: 20px auto;
+      max-width: 500px;
+      display: block;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .store-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .store-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      width: 200px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+    }
+    .store-card:hover {
+      transform: scale(1.05);
+    }
+    a {
+      text-decoration: none;
+      color: #007bff;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Welcome to Coupon Hub</h1>
+<input type="text" id="searchBar" placeholder="Search for a store..." onkeyup="filterStores()" />
+
+<div class="store-list" id="storeList">
+  <div class="store-card"><a href="abhibus.html">AbhiBus</a></div>
+  <div class="store-card"><a href="amazon.html">Amazon</a></div>
+  <div class="store-card"><a href="flipkart.html">Flipkart</a></div>
+  <div class="store-card"><a href="myntra.html">Myntra</a></div>
+  <div class="store-card"><a href="ajio.html">Ajio</a></div>
+</div>
+
+<script>
+  function filterStores() {
+    const input = document.getElementById('searchBar').value.toLowerCase();
+    const storeCards = document.querySelectorAll('.store-card');
+    storeCards.forEach(card => {
+      const text = card.innerText.toLowerCase();
+      card.style.display = text.includes(input) ? 'block' : 'none';
+    });
+  }
+</script>
+
+</body>
+</html>
