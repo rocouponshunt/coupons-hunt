@@ -3,63 +3,185 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Myntra Coupons</title>
+  <title>Myntra Coupons & Offers</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f7fb;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px 20px;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
     }
-    h1 {
-      color: #007bff;
-      margin-bottom: 30px;
-    }
-    .coupon-card {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+
+    .store-header {
       text-align: center;
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
-    .coupon-code {
-      font-size: 1.5rem;
+
+    .store-header img {
+      width: 150px;
+      height: auto;
+    }
+
+    .store-header h1 {
+      margin: 10px 0 0;
+      font-size: 28px;
+      color: #333;
+    }
+
+    .about-store {
+      background: #fff;
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .slider {
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .slider img {
+      border-radius: 10px;
+      width: 300px;
+      height: auto;
+    }
+
+    .coupons {
+      background: #fff;
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .coupon {
+      border: 1px dashed #ff3f6c;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      position: relative;
+      background: #ffe6ee;
+    }
+
+    .coupon h3 {
+      margin: 0 0 10px;
+      color: #c1004f;
+    }
+
+    .code-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    .code {
       font-weight: bold;
-      background: #eef3fc;
-      padding: 12px 20px;
-      border-radius: 8px;
-      margin: 15px 0;
-      display: inline-block;
+      background: #fff;
+      padding: 8px 16px;
+      border-radius: 5px;
+      border: 1px solid #ff3f6c;
     }
-    .btn {
-      background: #007bff;
-      color: white;
+
+    .copy-btn {
+      background: #ff3f6c;
+      color: #fff;
       border: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-size: 1rem;
+      padding: 8px 16px;
+      border-radius: 5px;
       cursor: pointer;
     }
-    .btn:hover {
-      background: #0056b3;
+
+    .visit-container {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .visit-btn {
+      padding: 14px 28px;
+      background: #ff3f6c;
+      color: #fff;
+      font-size: 16px;
+      border-radius: 6px;
+      border: none;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .visit-btn:hover {
+      background: #cc325a;
     }
   </style>
 </head>
 <body>
-  <h1>Myntra Coupon</h1>
-  <div class="coupon-card">
-    <p>Trendy styles await! Use this code for extra discounts on Myntra.</p>
-    <div class="coupon-code" id="code">MYNTRA20</div>
-    <button class="btn" onclick="copyAndRedirect()">Copy & Visit Myntra</button>
+
+  <!-- Header -->
+  <div class="store-header">
+    <img src="https://asset22.ckassets.com/resources/image/staticpage_images/myntra-1735792893-1748180041.jpg" alt="Myntra Logo" />
+    <h1>Myntra Coupons & Offers</h1>
   </div>
 
+  <!-- About Section -->
+  <div class="about-store">
+    <h2>About Myntra</h2>
+    <p>
+      Myntra is a leading fashion e-commerce platform in India offering a wide range of clothing, footwear, and accessories. Known for its trendy styles and exclusive collections, Myntra caters to fashion lovers with top brands and great deals.
+    </p>
+  </div>
+
+  <!-- Image Slider -->
+  <div class="slider">
+    <img src="https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/2023/4/20/7e1a9e90-1a33-4cd7-9b38-1023a20c687e1681987047796-Printed-Dresses-Desktop-Banner.jpg" alt="Myntra Fashion" />
+    <img src="https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/2023/4/20/05b2eb56-f06f-43d2-b09e-9216e81998121681987047785-Kidswear-Desktop-Banner.jpg" alt="Myntra Kidswear" />
+    <img src="https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/2023/4/20/cdc95df3-15b3-49c9-a392-39b87b62e8dc1681987047772-Sale-Desktop-Banner.jpg" alt="Myntra Sale" />
+  </div>
+
+  <!-- Coupons Section -->
+  <div class="coupons">
+    <div class="coupon">
+      <h3>Get 25% Off on First Order</h3>
+      <div class="code-section">
+        <div class="code" id="code1">MYNTRA25</div>
+        <button class="copy-btn" onclick="copyCode('code1')">Copy Code</button>
+      </div>
+    </div>
+
+    <div class="coupon">
+      <h3>Flat ₹500 Off on ₹3000+</h3>
+      <div class="code-section">
+        <div class="code" id="code2">FLAT500</div>
+        <button class="copy-btn" onclick="copyCode('code2')">Copy Code</button>
+      </div>
+    </div>
+
+    <div class="coupon">
+      <h3>Extra 10% Cashback with Select Cards</h3>
+      <div class="code-section">
+        <div class="code" id="code3">CARD10</div>
+        <button class="copy-btn" onclick="copyCode('code3')">Copy Code</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Visit CTA -->
+  <div class="visit-container">
+    <a class="visit-btn" href="https://www.myntra.com" target="_blank">Visit Myntra</a>
+  </div>
+
+  <!-- JavaScript for Copy & Redirect -->
   <script>
-    function copyAndRedirect() {
-      const code = document.getElementById('code').innerText;
+    function copyCode(id) {
+      const code = document.getElementById(id).textContent;
       navigator.clipboard.writeText(code).then(() => {
-        window.location.href = 'https://www.myntra.com/';
+        window.open('https://www.myntra.com', '_blank');
       });
     }
   </script>
