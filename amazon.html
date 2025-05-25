@@ -2,64 +2,186 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Amazon Coupons</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Amazon Coupons & Offers</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f7fb;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px 20px;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
     }
-    h1 {
-      color: #007bff;
-      margin-bottom: 30px;
-    }
-    .coupon-card {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+
+    .store-header {
       text-align: center;
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
-    .coupon-code {
-      font-size: 1.5rem;
+
+    .store-header img {
+      width: 150px;
+      height: auto;
+    }
+
+    .store-header h1 {
+      margin: 10px 0 0;
+      font-size: 28px;
+      color: #333;
+    }
+
+    .about-store {
+      background: #fff;
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .slider {
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .slider img {
+      border-radius: 10px;
+      width: 300px;
+      height: auto;
+    }
+
+    .coupons {
+      background: #fff;
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .coupon {
+      border: 1px dashed #ffa500;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      position: relative;
+      background: #fff8e1;
+    }
+
+    .coupon h3 {
+      margin: 0 0 10px;
+      color: #e68a00;
+    }
+
+    .code-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    .code {
       font-weight: bold;
-      background: #eef3fc;
-      padding: 12px 20px;
-      border-radius: 8px;
-      margin: 15px 0;
-      display: inline-block;
+      background: #fff;
+      padding: 8px 16px;
+      border-radius: 5px;
+      border: 1px solid #ffa500;
     }
-    .btn {
-      background: #007bff;
-      color: white;
+
+    .copy-btn {
+      background: #ffa500;
+      color: #fff;
       border: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-size: 1rem;
+      padding: 8px 16px;
+      border-radius: 5px;
       cursor: pointer;
     }
-    .btn:hover {
-      background: #0056b3;
+
+    .visit-container {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .visit-btn {
+      padding: 14px 28px;
+      background: #ff9900;
+      color: #fff;
+      font-size: 16px;
+      border-radius: 6px;
+      border: none;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .visit-btn:hover {
+      background: #e68a00;
     }
   </style>
 </head>
 <body>
-  <h1>Amazon Coupon</h1>
-  <div class="coupon-card">
-    <p>Grab this Amazon discount code and shop your favorites at lower prices!</p>
-    <div class="coupon-code" id="code">AMZ10</div>
-    <button class="btn" onclick="copyAndRedirect()">Copy & Visit Amazon</button>
+
+  <!-- Header -->
+  <div class="store-header">
+    <img src="images/amazon.png" alt="Amazon Logo" />
+    <h1>Amazon Coupons & Offers</h1>
   </div>
 
+  <!-- About Section -->
+  <div class="about-store">
+    <h2>About Amazon</h2>
+    <p>
+      Amazon is one of the world's largest online marketplaces, offering everything from electronics and fashion to groceries and home essentials. Known for its fast delivery, huge selection, and unbeatable prices, Amazon is a go-to destination for online shopping across India.
+    </p>
+  </div>
+
+  <!-- Image Slider -->
+  <div class="slider">
+    <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Wireless/Hero/Apple/May/D98172166_WLD_Apple_Storefront_DesktopTallHero_3000x1200._CB589769170_.jpg" alt="Amazon Offer 1" />
+    <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/shoes/May/Unrec/Under799/3000._CB589586776_.jpg" alt="Amazon Offer 2" />
+    <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img24/Consumables/Grocery/GW/PC_Hero_3000x1200._CB582812264_.jpg" alt="Amazon Offer 3" />
+  </div>
+
+  <!-- Coupons Section -->
+  <div class="coupons">
+    <div class="coupon">
+      <h3>Up to 70% Off on Fashion</h3>
+      <div class="code-section">
+        <div class="code" id="code1">FASHION70</div>
+        <button class="copy-btn" onclick="copyCode('code1')">Copy Code</button>
+      </div>
+    </div>
+
+    <div class="coupon">
+      <h3>Flat ₹500 Off on Mobiles</h3>
+      <div class="code-section">
+        <div class="code" id="code2">MOB500</div>
+        <button class="copy-btn" onclick="copyCode('code2')">Copy Code</button>
+      </div>
+    </div>
+
+    <div class="coupon">
+      <h3>Extra 10% Cashback with Bank Offers</h3>
+      <div class="code-section">
+        <div class="code" id="code3">BANK10</div>
+        <button class="copy-btn" onclick="copyCode('code3')">Copy Code</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Visit CTA -->
+  <div class="visit-container">
+    <a class="visit-btn" href="https://www.amazon.in" target="_blank">Visit Amazon</a>
+  </div>
+
+  <!-- JavaScript for Copy Function -->
   <script>
-    function copyAndRedirect() {
-      const code = document.getElementById('code').innerText;
+    function copyCode(id) {
+      const code = document.getElementById(id).textContent;
       navigator.clipboard.writeText(code).then(() => {
-        window.location.href = 'https://www.amazon.in/';
+        window.open('https://www.amazon.in', '_blank');
       });
     }
   </script>
