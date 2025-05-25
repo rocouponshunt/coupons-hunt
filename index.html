@@ -15,20 +15,22 @@
       background: #f4f7fb;
       color: #333;
       min-height: 100vh;
-      padding: 30px 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 15px 50px;
     }
 
-    /* Header - logo left, search right */
+    /* Header */
     header {
+      width: 100%;
+      max-width: 900px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 40px;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
+      padding: 0 10px;
     }
-
     header .logo {
       display: flex;
       align-items: center;
@@ -39,21 +41,19 @@
       user-select: none;
       cursor: default;
     }
-
     header .logo img {
       height: 45px;
     }
-
-    header .search-box input[type="text"] {
-      padding: 10px 15px;
+    header .search-box input[type="search"] {
+      padding: 8px 14px;
       font-size: 1rem;
       border: 2px solid #007bff;
       border-radius: 25px;
-      outline: none;
       width: 220px;
       transition: border-color 0.3s ease;
     }
-    header .search-box input[type="text"]:focus {
+    header .search-box input[type="search"]:focus {
+      outline: none;
       border-color: #0056b3;
     }
 
@@ -65,10 +65,8 @@
       justify-content: center;
       max-width: 900px;
       width: 100%;
-      margin-left: auto;
-      margin-right: auto;
+      margin-bottom: 50px;
     }
-
     nav.store-list a {
       background: white;
       text-decoration: none;
@@ -97,26 +95,27 @@
       font-size: 1rem;
     }
 
-    /* About Us section */
+    /* About Us Section */
     section.about-us {
       max-width: 900px;
-      margin: 40px auto 0;
       background: white;
-      padding: 25px 30px;
+      padding: 30px 35px;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgb(0 123 255 / 0.1);
+      margin-bottom: 50px;
       display: flex;
+      gap: 30px;
       align-items: center;
-      gap: 25px;
       flex-wrap: wrap;
+      color: #333;
     }
     section.about-us img {
       max-width: 280px;
+      width: 100%;
       border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      flex-shrink: 0;
+      box-shadow: 0 2px 12px rgb(0 123 255 / 0.1);
     }
-    section.about-us .content {
+    section.about-us div.text {
       flex: 1;
       min-width: 280px;
     }
@@ -128,7 +127,49 @@
     section.about-us p {
       font-size: 1.1rem;
       line-height: 1.6;
-      color: #555;
+    }
+
+    /* Testimonials Section */
+    section.testimonials {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px 35px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgb(0 123 255 / 0.1);
+      text-align: center;
+      color: #333;
+    }
+    section.testimonials h2 {
+      color: #007bff;
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+    .testimonial-list {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .testimonial {
+      background: #f0f6ff;
+      padding: 20px 25px;
+      border-radius: 10px;
+      width: 280px;
+      box-shadow: 0 2px 8px rgb(0 123 255 / 0.15);
+      font-style: italic;
+      color: #444;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .testimonial h4 {
+      margin-top: 20px;
+      font-weight: 700;
+      font-style: normal;
+      color: #007bff;
+      text-align: right;
+      font-size: 1rem;
     }
 
     /* Responsive */
@@ -138,16 +179,21 @@
         padding: 15px 10px;
         font-size: 0.95rem;
       }
-
       section.about-us {
         flex-direction: column;
-        text-align: center;
+        padding: 20px;
+        gap: 20px;
       }
-      section.about-us img {
+      section.about-us img,
+      section.about-us div.text {
         max-width: 100%;
       }
-      section.about-us .content {
-        min-width: auto;
+      .testimonial-list {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .testimonial {
+        width: 100%;
       }
     }
   </style>
@@ -160,7 +206,7 @@
     <span>CouponsHunt</span>
   </div>
   <div class="search-box">
-    <input type="text" placeholder="Search coupons, stores..." aria-label="Search coupons or stores" />
+    <input type="search" placeholder="Search coupons or stores..." aria-label="Search coupons or stores" />
   </div>
 </header>
 
@@ -192,12 +238,33 @@
 </nav>
 
 <section class="about-us">
-  <img src="https://images.unsplash.com/photo-1590080877777-48b2b1ae3cbb?auto=format&fit=crop&w=600&q=80" alt="Coupons and Offers" />
-  <div class="content">
+  <img src="https://asset22.ckassets.com/resources/image/staticpage_images/ChatGPTImageMay24202508_17_59P-1748185501.jpeg" alt="About CouponsHunt" />
+  <div class="text">
     <h2>About CouponsHunt</h2>
     <p>
-      CouponsHunt is your go-to platform for the best coupons, deals, and offers across popular online stores. We help you save money effortlessly by bringing together the latest and verified discounts, promo codes, and cashback offers all in one place. Whether you're shopping for fashion, electronics, travel, or everyday essentials, CouponsHunt makes it easy to find unbeatable savings.
+      CouponsHunt is your go-to platform for discovering the latest coupons, deals, and offers across popular online stores. We help you save money by providing verified and up-to-date discount codes, cashback offers, and exclusive promotions.
     </p>
+    <p>
+      Whether you're shopping for fashion, electronics, travel, or more, CouponsHunt makes it easy to find the best deals all in one place. Start saving today with our hassle-free coupon experience!
+    </p>
+  </div>
+</section>
+
+<section class="testimonials">
+  <h2>What Our Users Say</h2>
+  <div class="testimonial-list">
+    <div class="testimonial">
+      <p>"CouponsHunt helped me save big on my online shopping! The deals are always up-to-date and easy to find."</p>
+      <h4>- Rina K.</h4>
+    </div>
+    <div class="testimonial">
+      <p>"I love how simple the website is and the variety of coupons available. Highly recommend for smart shoppers."</p>
+      <h4>- Arjun S.</h4>
+    </div>
+    <div class="testimonial">
+      <p>"Great platform to find genuine discounts. The cashback offers made my purchase even sweeter."</p>
+      <h4>- Meera P.</h4>
+    </div>
   </div>
 </section>
 
