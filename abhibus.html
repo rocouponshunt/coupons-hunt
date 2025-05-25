@@ -2,64 +2,176 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AbhiBus Coupons</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AbhiBus Coupons & Offers</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f7fb;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .store-header {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      padding: 40px 20px;
-    }
-    h1 {
-      color: #007bff;
-      margin-bottom: 30px;
-    }
-    .coupon-card {
-      background: white;
-      padding: 30px;
+      gap: 20px;
+      background: #fff;
+      padding: 20px;
       border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
-    .coupon-code {
-      font-size: 1.5rem;
+
+    .store-header img {
+      width: 120px;
+      height: auto;
+    }
+
+    .store-header h1 {
+      margin: 0;
+      font-size: 28px;
+      color: #333;
+    }
+
+    .about-store {
+      background: #fff;
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .slider {
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .slider img {
+      border-radius: 10px;
+      width: 300px;
+      height: auto;
+    }
+
+    .coupons {
+      background: #fff;
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .coupon {
+      border: 1px dashed #ff4d4f;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      position: relative;
+      background: #fff0f0;
+    }
+
+    .coupon h3 {
+      margin: 0 0 10px;
+      color: #d9363e;
+    }
+
+    .code-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    .code {
       font-weight: bold;
-      background: #eef3fc;
-      padding: 12px 20px;
-      border-radius: 8px;
-      margin: 15px 0;
-      display: inline-block;
+      background: #fff;
+      padding: 8px 16px;
+      border-radius: 5px;
+      border: 1px solid #ff4d4f;
     }
-    .btn {
-      background: #007bff;
-      color: white;
+
+    .copy-btn {
+      background: #ff4d4f;
+      color: #fff;
       border: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-size: 1rem;
+      padding: 8px 16px;
+      border-radius: 5px;
       cursor: pointer;
     }
-    .btn:hover {
-      background: #0056b3;
+
+    .visit-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <h1>AbhiBus Coupon</h1>
-  <div class="coupon-card">
-    <p>Use the coupon code below and save big on your next bus booking!</p>
-    <div class="coupon-code" id="code">ABHI20</div>
-    <button class="btn" onclick="copyAndRedirect()">Copy & Visit AbhiBus</button>
+
+  <!-- Header -->
+  <div class="store-header">
+    <img src="https://seeklogo.com/images/A/abhibus-logo-DC343BE96A-seeklogo.com.png" alt="AbhiBus Logo" />
+    <h1>AbhiBus Coupons & Offers</h1>
   </div>
 
+  <!-- About Section -->
+  <div class="about-store">
+    <h2>About AbhiBus</h2>
+    <p>
+      AbhiBus is one of India’s leading online bus ticketing platforms that offers easy and fast bookings across thousands of routes and operators. Whether you're planning a last-minute trip or a long journey, AbhiBus ensures a smooth booking experience with exclusive discounts, secure payments, and instant confirmations.
+    </p>
+  </div>
+
+  <!-- Image Slider -->
+  <div class="slider">
+    <img src="https://cdn.grabon.in/gograbon/images/web-images/uploads/1613649873145/abhibus-coupons.jpg" alt="AbhiBus Offer 1" />
+    <img src="https://assets.abhibus.com/images/offers/web/abhibus-offers.jpg" alt="AbhiBus Offer 2" />
+    <img src="https://assets.abhibus.com/images/offers/web/offer-15.jpg" alt="AbhiBus Offer 3" />
+  </div>
+
+  <!-- Coupons Section -->
+  <div class="coupons">
+    <div class="coupon">
+      <h3>Flat 15% Off on First Bus Booking</h3>
+      <div class="code-section">
+        <div class="code" id="code1">FIRST15</div>
+        <button class="copy-btn" onclick="copyCode('code1')">Copy Code</button>
+      </div>
+    </div>
+
+    <div class="coupon">
+      <h3>Get ₹100 Cashback on Bus Tickets</h3>
+      <div class="code-section">
+        <div class="code" id="code2">SAVE100</div>
+        <button class="copy-btn" onclick="copyCode('code2')">Copy Code</button>
+      </div>
+    </div>
+
+    <div class="coupon">
+      <h3>10% Off for Existing Users</h3>
+      <div class="code-section">
+        <div class="code" id="code3">REPEAT10</div>
+        <button class="copy-btn" onclick="copyCode('code3')">Copy Code</button>
+      </div>
+    </div>
+
+    <!-- Visit CTA -->
+    <a class="visit-btn" href="https://www.abhibus.com" target="_blank">Visit AbhiBus</a>
+  </div>
+
+  <!-- JavaScript for Copy Function -->
   <script>
-    function copyAndRedirect() {
-      const code = document.getElementById('code').innerText;
+    function copyCode(id) {
+      const code = document.getElementById(id).textContent;
       navigator.clipboard.writeText(code).then(() => {
-        window.location.href = 'https://www.abhibus.com/';
+        alert("Code copied: " + code);
       });
     }
   </script>
