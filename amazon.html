@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Amazon Coupons | Coupons Hunt</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #fafafa;
+      color: #222;
+      padding: 20px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    header img {
+      height: 36px;
+    }
+    header h1 {
+      font-weight: 700;
+      font-size: 1.8rem;
+      margin: 0;
+      color: #ff9900;
+      flex-grow: 1;
+    }
+    a.back-link {
+      text-decoration: none;
+      color: #007bff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: 1px solid #007bff;
+      padding: 6px 12px;
+      border-radius: 20px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    a.back-link:hover {
+      background-color: #007bff;
+      color: white;
+    }
+    .coupon {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      padding: 20px 25px;
+      margin-bottom: 25px;
+    }
+    .coupon h3 {
+      margin-top: 0;
+      color: #ff9900;
+    }
+    .code {
+      font-weight: 700;
+      background: #ffe6b3;
+      padding: 7px 15px;
+      border-radius: 6px;
+      display: inline-block;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      margin-top: 10px;
+      user-select: all;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .code:hover {
+      background-color: #ffd633;
+    }
+    a.shop-now {
+      display: inline-block;
+      margin-top: 15px;
+      text-decoration: none;
+      background: #ff9900;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-weight: 700;
+      transition: background-color 0.3s ease;
+    }
+    a.shop-now:hover {
+      background-color: #cc7a00;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="back-link">← Back to Stores</a>
+  <h1>Amazon Coupons & Offers</h1>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo" style="height:40px;">
+</header>
+
+<div class="coupon">
+  <h3>Up to 40% Off on Electronics</h3>
+  <p>No coupon code required.</p>
+  <a href="https://www.amazon.in" target="_blank" rel="noopener" class="shop-now">Shop Now</a>
+</div>
+
+<div class="coupon">
+  <h3>Flat ₹150 Off on Orders Above ₹1000</h3>
+  <p>Use code:</p>
+  <span class="code" onclick="copyCode('AMZ150')">AMZ150</span>
+  <br />
+  <a href="https://www.amazon.in" target="_blank" rel="noopener" class="shop-now">Shop Now</a>
+</div>
+
+<script>
+  function copyCode(code) {
+    navigator.clipboard.writeText(code).then(() => {
+      alert(`Coupon code "${code}" copied to clipboard!`);
+    });
+  }
+</script>
+
+</body>
+</html>
