@@ -2,64 +2,186 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Flipkart Coupons</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flipkart Coupons & Offers</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f7fb;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px 20px;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
     }
-    h1 {
-      color: #007bff;
-      margin-bottom: 30px;
-    }
-    .coupon-card {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+
+    .store-header {
       text-align: center;
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
-    .coupon-code {
-      font-size: 1.5rem;
+
+    .store-header img {
+      width: 150px;
+      height: auto;
+    }
+
+    .store-header h1 {
+      margin: 10px 0 0;
+      font-size: 28px;
+      color: #333;
+    }
+
+    .about-store {
+      background: #fff;
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .slider {
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .slider img {
+      border-radius: 10px;
+      width: 300px;
+      height: auto;
+    }
+
+    .coupons {
+      background: #fff;
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .coupon {
+      border: 1px dashed #007bff;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      position: relative;
+      background: #e7f0ff;
+    }
+
+    .coupon h3 {
+      margin: 0 0 10px;
+      color: #004ab9;
+    }
+
+    .code-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    .code {
       font-weight: bold;
-      background: #eef3fc;
-      padding: 12px 20px;
-      border-radius: 8px;
-      margin: 15px 0;
-      display: inline-block;
+      background: #fff;
+      padding: 8px 16px;
+      border-radius: 5px;
+      border: 1px solid #007bff;
     }
-    .btn {
+
+    .copy-btn {
       background: #007bff;
-      color: white;
+      color: #fff;
       border: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-size: 1rem;
+      padding: 8px 16px;
+      border-radius: 5px;
       cursor: pointer;
     }
-    .btn:hover {
-      background: #0056b3;
+
+    .visit-container {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .visit-btn {
+      padding: 14px 28px;
+      background: #2874f0;
+      color: #fff;
+      font-size: 16px;
+      border-radius: 6px;
+      border: none;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .visit-btn:hover {
+      background: #0c58d4;
     }
   </style>
 </head>
 <body>
-  <h1>Flipkart Coupon</h1>
-  <div class="coupon-card">
-    <p>Use this Flipkart code to unlock great deals and discounts!</p>
-    <div class="coupon-code" id="code">FLIP15</div>
-    <button class="btn" onclick="copyAndRedirect()">Copy & Visit Flipkart</button>
+
+  <!-- Header -->
+  <div class="store-header">
+    <img src="images/flipkart.png" alt="Flipkart Logo" />
+    <h1>Flipkart Coupons & Offers</h1>
   </div>
 
+  <!-- About Section -->
+  <div class="about-store">
+    <h2>About Flipkart</h2>
+    <p>
+      Flipkart is one of India’s largest online shopping platforms, offering a wide range of categories including electronics, fashion, home appliances, and more. With fast delivery, regular sales, and top-rated customer service, Flipkart is a go-to destination for smart shoppers.
+    </p>
+  </div>
+
+  <!-- Image Slider -->
+  <div class="slider">
+    <img src="https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/f164a705edb2927e.jpg" alt="Flipkart Offer 1" />
+    <img src="https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/2a058dcb343b2163.jpg" alt="Flipkart Offer 2" />
+    <img src="https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/9e7b4fc9d4fcb1de.jpg" alt="Flipkart Offer 3" />
+  </div>
+
+  <!-- Coupons Section -->
+  <div class="coupons">
+    <div class="coupon">
+      <h3>Extra ₹1000 Off on Electronics</h3>
+      <div class="code-section">
+        <div class="code" id="code1">ELECTRO1000</div>
+        <button class="copy-btn" onclick="copyCode('code1')">Copy Code</button>
+      </div>
+    </div>
+
+    <div class="coupon">
+      <h3>Flat 60% Off on Fashion Deals</h3>
+      <div class="code-section">
+        <div class="code" id="code2">FASHION60</div>
+        <button class="copy-btn" onclick="copyCode('code2')">Copy Code</button>
+      </div>
+    </div>
+
+    <div class="coupon">
+      <h3>Bank Offers: 10% Instant Discount</h3>
+      <div class="code-section">
+        <div class="code" id="code3">BANK10</div>
+        <button class="copy-btn" onclick="copyCode('code3')">Copy Code</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Visit CTA -->
+  <div class="visit-container">
+    <a class="visit-btn" href="https://www.flipkart.com" target="_blank">Visit Flipkart</a>
+  </div>
+
+  <!-- JavaScript for Copy Function -->
   <script>
-    function copyAndRedirect() {
-      const code = document.getElementById('code').innerText;
+    function copyCode(id) {
+      const code = document.getElementById(id).textContent;
       navigator.clipboard.writeText(code).then(() => {
-        window.location.href = 'https://www.flipkart.com/';
+        window.open('https://www.flipkart.com', '_blank');
       });
     }
   </script>
