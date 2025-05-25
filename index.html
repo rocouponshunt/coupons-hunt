@@ -287,107 +287,137 @@
   </a>
 
   <a href="myntra.html" title="Myntra">
-    <img src="https://asset22.ckassets.com/resources/image/staticpage_images/myntra-1735792893-1748180041.jpg" alt="Myntra Logo" />
+    <img src="https://asset22.ckassets.com/resources/image/staticpage_images/myntra-coupons-1735626070-1748180086.jpg" alt="Myntra Logo" />
     <span>Myntra</span>
   </a>
 
-  <a href="ajio.html" title="Ajio">
-    <img src="https://asset22.ckassets.com/resources/image/staticpage_images/ajio-coupons-1735561339-1748180012.jpg" alt="Ajio Logo" />
-    <span>Ajio</span>
+  <a href="nykaa.html" title="Nykaa">
+    <img src="https://asset22.ckassets.com/resources/image/staticpage_images/nykaa-1735629795-1748180104.jpg" alt="Nykaa Logo" />
+    <span>Nykaa</span>
+  </a>
+
+  <a href="ajio.html" title="AJIO">
+    <img src="https://asset22.ckassets.com/resources/image/staticpage_images/ajio-1735631653-1748180117.jpg" alt="AJIO Logo" />
+    <span>AJIO</span>
   </a>
 </nav>
 
-<section class="about-us">
-  <img src="https://asset22.ckassets.com/resources/image/staticpage_images/ChatGPTImageMay24202508_17_59P-1748185501.jpeg" alt="About CouponsHunt" />
+<section class="about-us" aria-labelledby="aboutUsTitle">
+  <img
+    src="https://cdn.pixabay.com/photo/2016/11/29/03/53/people-1869716_1280.jpg"
+    alt="Team collaborating at CouponsHunt"
+    loading="lazy"
+  />
   <div class="text">
-    <h2>About CouponsHunt</h2>
+    <h2 id="aboutUsTitle">About CouponsHunt</h2>
     <p>
-      CouponsHunt is your go-to platform for discovering the latest coupons, deals, and offers across popular online stores. We help you save money by providing verified and up-to-date discount codes, cashback offers, and exclusive promotions.
-    </p>
-    <p>
-      Whether you're shopping for fashion, electronics, travel, or more, CouponsHunt makes it easy to find the best deals all in one place. Start saving today with our hassle-free coupon experience!
+      CouponsHunt is India’s fastest-growing coupon website offering a wide
+      variety of coupons, deals, and discounts from top online stores. Our
+      dedicated team works 24x7 to bring you the best offers, making your
+      online shopping smarter and more affordable.
     </p>
   </div>
 </section>
 
-<section class="testimonials" aria-label="User testimonials slider">
-  <h2>What Our Users Say</h2>
-  <div class="slider-arrow left" id="prevBtn" aria-label="Previous testimonials" role="button" tabindex="0">&#10094;</div>
-  <div class="slider-arrow right" id="nextBtn" aria-label="Next testimonials" role="button" tabindex="0">&#10095;</div>
-  <div class="testimonial-list" id="testimonialList">
-    <div class="testimonial">
-      <p>"CouponsHunt helped me save big on my online shopping! The deals are always up-to-date and easy to find."</p>
-      <h4>- Rina K.</h4>
-    </div>
-    <div class="testimonial">
-      <p>"I love how simple the website is and the variety of coupons available. Highly recommend for smart shoppers."</p>
-      <h4>- Arjun S.</h4>
-    </div>
-    <div class="testimonial">
-      <p>"Great platform to find genuine discounts. The cashback offers made my purchase even sweeter."</p>
-      <h4>- Meera P.</h4>
-    </div>
-    <div class="testimonial">
-      <p>"The customer support and timely updates make CouponsHunt my favorite coupon site. Saves me so much time!"</p>
-      <h4>- Neha D.</h4>
-    </div>
+<section class="testimonials" aria-label="User Testimonials">
+  <h2>User Testimonials</h2>
+  <div class="testimonial-list" id="testimonialList" role="list" aria-live="polite">
+    <article class="testimonial" role="listitem" tabindex="0">
+      “CouponsHunt helped me save a lot on my daily shopping. The deals are
+      genuine and easy to use!”
+      <h4>- Rahul, Mumbai</h4>
+    </article>
+    <article class="testimonial" role="listitem" tabindex="0">
+      “I always check CouponsHunt before buying anything online. Their
+      coupon collection is amazing and updated regularly.”
+      <h4>- Priya, Bangalore</h4>
+    </article>
+    <article class="testimonial" role="listitem" tabindex="0">
+      “Best coupon site I have used! The website is user-friendly and I found
+      great discounts on Amazon and Flipkart.”
+      <h4>- Ankit, Delhi</h4>
+    </article>
+    <article class="testimonial" role="listitem" tabindex="0">
+      “The customer support is great, and they helped me understand how to use
+      cashback codes efficiently.”
+      <h4>- Sneha, Chennai</h4>
+    </article>
   </div>
+
+  <button class="slider-arrow left" aria-label="Previous Testimonial" id="prevBtn" tabindex="0">&#8592;</button>
+  <button class="slider-arrow right" aria-label="Next Testimonial" id="nextBtn" tabindex="0">&#8594;</button>
 </section>
 
 <script>
-  // Search store filter
+  // Search functionality for store links
   const searchInput = document.getElementById('searchInput');
   const storeList = document.getElementById('storeList');
-  const storeLinks = Array.from(storeList.querySelectorAll('a'));
+  const stores = Array.from(storeList.querySelectorAll('a'));
 
   searchInput.addEventListener('input', () => {
     const query = searchInput.value.trim().toLowerCase();
-    storeLinks.forEach(link => {
-      const storeName = link.textContent.trim().toLowerCase();
+    stores.forEach(store => {
+      const storeName = store.textContent.toLowerCase();
       if (storeName.includes(query)) {
-        link.style.display = 'flex';
+        store.style.display = '';
       } else {
-        link.style.display = 'none';
+        store.style.display = 'none';
       }
     });
   });
 
-  // Testimonials slider logic
+  // Testimonials slider
   const testimonialList = document.getElementById('testimonialList');
+  const testimonials = Array.from(testimonialList.children);
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
-  const testimonialCount = testimonialList.children.length;
+
   let currentIndex = 0;
+  const visibleCount = 1; // show one testimonial at a time
 
   function updateSlider() {
-    const slideWidth = testimonialList.children[0].offsetWidth + 20; // width + gap
-    testimonialList.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
+    const offset = -currentIndex * (testimonials[0].offsetWidth + 20); // width + gap
+    testimonialList.style.transform = `translateX(${offset}px)`;
+
+    // Manage button disabled state
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex >= testimonials.length - visibleCount;
   }
 
   prevBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + testimonialCount) % testimonialCount;
-    updateSlider();
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateSlider();
+      testimonials[currentIndex].focus();
+    }
   });
+
   nextBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % testimonialCount;
+    if (currentIndex < testimonials.length - visibleCount) {
+      currentIndex++;
+      updateSlider();
+      testimonials[currentIndex].focus();
+    }
+  });
+
+  // Initialize slider
+  window.addEventListener('load', () => {
     updateSlider();
   });
 
   // Keyboard accessibility for arrows
-  [prevBtn, nextBtn].forEach(btn => {
-    btn.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        btn.click();
-      }
-    });
+  prevBtn.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      prevBtn.click();
+    }
   });
-
-  // Adjust slider on window resize
-  window.addEventListener('resize', updateSlider);
-
-  // Initialize slider position
-  updateSlider();
+  nextBtn.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      nextBtn.click();
+    }
+  });
 </script>
 
 </body>
